@@ -1,9 +1,12 @@
 {
   "name": "tms-handlebars",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "增强handlebars的便利性。",
   "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rimraf ./dist && tsc"
   },
@@ -13,8 +16,6 @@
   "author": "jasony62",
   "license": "MIT",
   "dependencies": {
-    "debug": "^4.3.5",
-    "dotenv": "^16.4.5",
     "handlebars": "^4.7.8",
     "handlebars-helpers": "^0.10.0"
   },

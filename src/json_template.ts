@@ -12,6 +12,7 @@ class JsonTransformer {
     this._transformedValue = this.transform(_inputJson)
   }
   /**
+   * 检查指定字符串是否包含模板
    *
    * @param value
    * @returns
@@ -45,11 +46,16 @@ class JsonTransformer {
         const newValue = this._handlebars.compile(value, { noEscape: true })(
           this._parameters
         )
-        try {
-          return JSON.parse(newValue)
-        } catch (e) {
-          return value
+        // 处理JSON字符串
+        if (/^{{\s*JSONstringify/.test(value)) {
+          try {
+            return JSON.parse(newValue)
+          } catch (e) {
+            return value
+          }
         }
+
+        return newValue
       }
       return value
     } else {
